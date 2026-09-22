@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
-import '../estilos/estilos_app.dart'; // <-- Importamos tus nuevos estilos
+import '../estilos/estilos_app.dart'; //
 import 'product_detail_screen.dart';
 
 class HomeScreen extends StatelessWidget {

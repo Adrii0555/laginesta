@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../estilos/estilos_app.dart';
-import 'login_screen.dart'; // Importamos la pantalla que tú has hecho
+import 'login_screen.dart';
+import 'quienes_somos_screen.dart';
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -16,7 +17,12 @@ class LandingScreen extends StatelessWidget {
         actions: [
           // Botón Quiénes Somos (Sin lógica aún)
           TextButton(
-            onPressed: () {}, 
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const QuienesSomosScreen()),
+              );
+            },
             child: const Text('Quiénes somos', style: EstilosApp.textoBotonNav),
           ),
           const SizedBox(width: 8),
