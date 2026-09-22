@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/product.dart';
+import '../estilos/estilos_app.dart'; // Importamos la hoja de estilos
 
 class ProductDetailScreen extends StatefulWidget {
   final Product product;
@@ -42,15 +43,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: EstilosApp.colorFondo, // Usamos el fondo de los estilos
       appBar: AppBar(
-        title: Text(widget.product.name, style: const TextStyle(color: Colors.white)),
-        backgroundColor: Colors.orange[800],
-        iconTheme: const IconThemeData(color: Colors.white), // Color de la flecha de volver
+        title: Text(widget.product.name, style: EstilosApp.tituloAppBar), // Estilo del AppBar
+        backgroundColor: EstilosApp.colorPrincipal, // Color corporativo
+        iconTheme: const IconThemeData(color: EstilosApp.colorTextoClaro), 
       ),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [
-          Text(widget.product.description, style: const TextStyle(fontSize: 16, color: Colors.grey)),
+          Text(widget.product.description, style: EstilosApp.subtitulo), // Estilo de subtítulo
           const SizedBox(height: 20),
           
           // --- SECCIÓN TAMAÑOS ---
@@ -61,7 +63,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 title: Text('${size.name} (+${size.extraPrice.toStringAsFixed(2)} €)'),
                 value: size,
                 groupValue: selectedSize,
-                activeColor: Colors.orange[800],
+                activeColor: EstilosApp.colorPrincipal, // Color corporativo
                 onChanged: (value) {
                   setState(() { selectedSize = value; });
                 },
@@ -78,7 +80,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 title: Text('${bread.name} (+${bread.extraPrice.toStringAsFixed(2)} €)'),
                 value: bread,
                 groupValue: selectedBread,
-                activeColor: Colors.orange[800],
+                activeColor: EstilosApp.colorPrincipal, // Color corporativo
                 onChanged: (value) {
                   setState(() { selectedBread = value; });
                 },
@@ -94,7 +96,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               return CheckboxListTile(
                 title: Text('${extra.name} (+${extra.extraPrice.toStringAsFixed(2)} €)'),
                 value: selectedExtras.contains(extra),
-                activeColor: Colors.orange[800],
+                activeColor: EstilosApp.colorPrincipal, // Color corporativo
                 onChanged: (bool? checked) {
                   setState(() {
                     if (checked == true) {
@@ -116,7 +118,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           padding: const EdgeInsets.all(16.0),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.orange[800],
+              backgroundColor: EstilosApp.colorPrincipal, // Color corporativo
               padding: const EdgeInsets.symmetric(vertical: 16),
             ),
             onPressed: () {
@@ -128,7 +130,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             },
             child: Text(
               'Añadir al pedido - ${totalPrice.toStringAsFixed(2)} €',
-              style: const TextStyle(fontSize: 18, color: Colors.white, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, color: EstilosApp.colorTextoClaro, fontWeight: FontWeight.bold),
             ),
           ),
         ),

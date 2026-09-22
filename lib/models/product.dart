@@ -66,16 +66,4 @@ List<Product> mockProducts = [
       ProductOption(name: 'Taza grande', extraPrice: 0.30),
     ],
   ),
-  
-  Product(
-    id: "3",
-    name: "Webos de Valen",
-    description: "Mis webos al sol",
-    basePrice: 5.50,
-
-    sizes: [
-      ProductOption(name: "Webos normales"),
-      ProductOption(name: "Webos to grandes", extraPrice: 2.00),
-    ],
-  ),
 ];

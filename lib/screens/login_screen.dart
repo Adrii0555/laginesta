@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home_screen.dart';
+import 'admin_home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,8 +21,9 @@ class _LoginScreenState extends State<LoginScreen> {
     // Lógica de usuarios de prueba (Mock Auth)
     if (email == 'admin@admin.com' && password == '1234') {
       // Si es admin, lo llevamos a una futura pantalla de gestión
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('¡Bienvenido Administrador!')),
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AdminHomeScreen()),
       );
       // Aquí irá el Navigator.push a la AdminScreen cuando la crees
     } else if (email.isNotEmpty && password.isNotEmpty) {
