@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart'; // Importamos la pantalla principal
+import 'screens/login_screen.dart';
 
 void main() {
   runApp(const LaGinestaApp());
@@ -17,7 +17,7 @@ class LaGinestaApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orange),
         useMaterial3: true, // Usa el diseño más moderno de Android/Google
       ),
-      home: const HomeScreen(), // Le decimos que arranque en la HomeScreen
+      home: const LoginScreen(), // Le decimos que arranque en la LoginScreen
     );
   }
 }
