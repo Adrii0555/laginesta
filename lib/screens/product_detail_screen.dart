@@ -15,6 +15,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   // Aquí guardamos lo que el usuario va seleccionando
   ProductOption? selectedSize;
   ProductOption? selectedBread;
+  ProductOption? selectedIngredient;
   List<ProductOption> selectedExtras = [];
 
   @override
@@ -27,6 +28,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     if (widget.product.breadTypes != null && widget.product.breadTypes!.isNotEmpty) {
       selectedBread = widget.product.breadTypes!.first;
     }
+    if (widget.product.ingredient != null && widget.product.ingredient!.isNotEmpty) {
+      selectedIngredient = widget.product.ingredient!.first;
+    }
   }
 
   // Calculamos el precio total dinámicamente
@@ -34,6 +38,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     double total = widget.product.basePrice;
     if (selectedSize != null) total += selectedSize!.extraPrice;
     if (selectedBread != null) total += selectedBread!.extraPrice;
+    if (selectedIngredient != null) total += selectedIngredient!.extraPrice;
     for (var extra in selectedExtras) {
       total += extra.extraPrice;
     }
@@ -83,6 +88,23 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 activeColor: EstilosApp.colorPrincipal, // Color corporativo
                 onChanged: (value) {
                   setState(() { selectedBread = value; });
+                },
+              );
+            }),
+            const Divider(),
+          ],
+
+          // --- SECCIÓN INGREDIENTE DEL BOCATA ---
+          if (widget.product.ingredient != null && widget.product.ingredient!.isNotEmpty) ...[
+            const Text('Ingrediente principal', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            ...widget.product.ingredient!.map((ingredient) {
+              return RadioListTile<ProductOption>(
+                title: Text('${ingredient.name} (+${ingredient.extraPrice.toStringAsFixed(2)} €)'),
+                value: ingredient,
+                groupValue: selectedIngredient,
+                activeColor: EstilosApp.colorPrincipal, // Color corporativo
+                onChanged: (value) {
+                  setState(() { selectedIngredient = value; });
                 },
               );
             }),

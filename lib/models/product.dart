@@ -21,6 +21,7 @@ class Product {
   // Añadimos listas opcionales para las variaciones
   final List<ProductOption>? sizes;
   final List<ProductOption>? breadTypes;
+  final List<ProductOption>? ingredient;
   final List<ProductOption>? extraIngredients;
 
   Product({
@@ -30,6 +31,7 @@ class Product {
     required this.basePrice,
     this.sizes,
     this.breadTypes,
+    this.ingredient,
     this.extraIngredients,
   });
 }
@@ -38,12 +40,18 @@ class Product {
 List<Product> mockProducts = [
   Product(
     id: '1',
-    name: 'Bocadillo de Jamón',
+    name: 'Bocadillo',
     description: 'Con tomate restregado y aceite de oliva',
     basePrice: 4.50,
     sizes: [
       ProductOption(name: 'Normal'),
       ProductOption(name: 'Grande', extraPrice: 1.50),
+    ],
+    ingredient: [
+      ProductOption(name: 'Jamón serrano'),
+      ProductOption(name: 'Fuet'),
+      ProductOption(name: 'Pavo'),
+      ProductOption(name: 'Jamón Ibérico', extraPrice: 1.00),
     ],
     breadTypes: [
       ProductOption(name: 'Barra normal'),
